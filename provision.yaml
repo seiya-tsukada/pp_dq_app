@@ -1,0 +1,57 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: install packages
+    yum:
+      name:
+        - git
+        - readline-devel
+        - zlib-devel
+        - bzip2-devel
+        - sqlite-devel
+        - openssl-devel
+        - libffi-devel
+        - bzip2
+        - make
+        - gcc-c++
+
+  - name: clone repository
+    git:
+      repo: https://github.com/yyuu/pyenv.git
+      dest: /root/.pyenv
+      remote: upstream
+
+  - name: add to endrow
+    lineinfile:
+      dest=/root/.bashrc
+      line={{ item }}
+    with_items:
+      - ''
+      - 'export PYENV_ROOT=~/.pyenv'
+      - 'export PATH=$PATH:$PYENV_ROOT/bin:$PYENV_ROOT/shims'
+      - 'eval "`pyenv init -`"'
+
+  - name: read shell
+    shell: exec $SHELL
+
+  - name: get /root/.pyenv/versions/3.7.2 status
+    stat: path=/root/.pyenv/versions/3.7.2
+    register: file_stat
+ 
+  - debug: var=file_stat
+
+  - name: install python 3.7.2
+    shell: pyenv install 3.7.2
+    when: not file_stat.stat.exists
+
+  - name: set python 3.7.2
+    shell: pyenv global 3.7.2
+    when: not file_stat.stat.exists
+
+  - name: check python version
+    shell: python -V
+    when: not file_stat.stat.exists
+
+  - name: application needs directory
+    file: path=/var/dev/qrcodes state=directory owner=root group=root mode=0755

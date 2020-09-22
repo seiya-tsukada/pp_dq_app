@@ -1,0 +1,5 @@
+baseinfo.json
+model/__pycache__
+static/qrcodes/*
+qrcode
+qrcode.sqlite

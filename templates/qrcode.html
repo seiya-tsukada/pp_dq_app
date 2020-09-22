@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Generated QRCode</title>
+  </head>
+  <body>
+
+   <h1>QRCode</h1>
+
+   <a href="../static/qrcodes/{{ qrcode_image_name }}" download><img src="../static/qrcodes/{{ qrcode_image_name }}"></a>
+
+   <table border=1>
+    <tr> 
+      <th>Category</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <th>codeId</th>
+      <td align="center">{{ code.data.codeId }}</td>
+    </tr>
+    <tr> 
+      <th>expiryDate</th>
+      <td align="center">{{ expiryDate }}</td>
+    </tr>
+    <tr>
+      <th>merchantPaymentId</th>
+      <td align="center">{{ code.data.merchantPaymentId }}</td>
+    </tr>
+    <tr> 
+      <th>amount</th>
+      <td align="center">{{ code.data.amount.amount }}</td>
+    </tr>
+    <tr>
+      <th>orderDescription</th>
+      <td align="center">{{ code.data.orderDescription }}</td>
+    </tr>
+    <tr>
+      <th>terminalId</th>
+      <td align="center">{{ code.data.terminalId }}</td>
+    </tr>
+    <tr>
+      <th>storeInfo</th>
+      <td align="center">{{ code.data.storeInfo }}</td>
+    </tr>
+    <tr>
+      <th>storeId</th>
+      <td align="center">{{ code.data.storeId }}</td>
+    </tr>
+    <tr>
+      <th>orderItems</th>
+      <td align="center">{{ code.data.orderItems.0 }}</td>
+    </tr>
+    <tr> 
+      <th>requestedAt</th>
+      <td align="center">{{ requestedAt }}</table>
+    </tr>
+  <table>
+   <br />
+   <a href="{{ url_for('list') }}">一覧</a>
+
+  </body>
+</html>

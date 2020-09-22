@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>QRCode Generater list</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+  <h1 class="text-center">QRCode List</h1>
+
+  <div class="container">
+    <div class="table-responsive">
+  <table calss="table" border=1>
+    <tr> 
+      <th align="center">#</th>
+      <th align="center">Qrcode</th>
+      <th align="center">Qrcode Id</th>
+      <th align="center">expiryDate</th>
+      <th align="center">merchantPaymentId</th>
+      <th align="center">amount</th>
+      <th align="center">terminalId</th>
+      <th align="center">storeInfo</th>
+      <th align="center">storeId</th>
+      <th align="center">orderItems</th>
+      <th align="center">orderDesciption</th>
+      <th align="center">requestedAt</th>
+      <th align="center">paymentStatus</th>
+    </tr>
+    {% for qr_list in qr_list_s %}
+    <tr>
+      <td align="center">{{ qr_list.id }}</td>
+      <td align="center"><a href="../static/qrcodes/{{ qr_list.codeId }}.png" download><img src="../static/qrcodes/{{ qr_list.codeId }}.png" width="205" height="205"></a></td>
+      <td align="center">{{ qr_list.codeId }}</td>
+      <td align="center">{{ qr_list.expiryJstDate }}</td>
+      <td align="center">{{ qr_list.merchantPaymentId }}</td>
+      <td align="center">{{ qr_list.amount }}</td>
+      <td align="center">{{ qr_list.terminalId }}</td>
+      <td align="center">{{ qr_list.storeInfo }}</td>
+      <td align="center">{{ qr_list.storeId }}</td>
+      <td align="center">{{ qr_list.orderItems }}</td>
+      <td align="center">{{ qr_list.orderDescription }}</td>
+      <td align="center">{{ qr_list.requestedAtJst }}</td>
+      <td align="center">{{ qr_list.paymentStatus }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  </div>
+  <a href="{{ url_for('main') }}">作成画面</a>
+
+
+
+
+  </body>
+</html>

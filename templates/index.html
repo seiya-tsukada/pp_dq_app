@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>QRCode Generater</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='../static/js/jquery.validate.min.js'></script>
+    <script type='text/javascript' src='../static/js/jquery.validate.handler.js'></script>
+  </head>
+  <body>
+  
+  <h1 class="text-center">QRCode Generate</h1>
+
+   <div class="container">
+   <form method="POST" action="{{ url_for('qrcode') }}" id="form">
+    <table border=1>
+      <tr>
+        <th>{{ form.itemName.label }}※</th>
+        <td>{{ form.itemName }}</td> 
+      </tr>
+      <tr>
+        <th>{{ form.amount.label }}※</th>
+        <td>{{ form.amount }}</td> 
+      </tr>
+      <tr>
+        <th>{{ form.terminalId.label }}</th>
+        <td>{{ form.terminalId }}</td>
+      </tr>
+      <tr>
+        <th>{{ form.storeInfo.label }}</th>
+        <td>{{ form.storeInfo }}</td>
+      </tr>
+      <tr>
+        <th>{{ form.storeId.label }}</th>
+        <td>{{ form.storeId }}</td>
+      </tr>
+      <tr>
+        <th>{{ form.orderDescription.label }}</th>
+        <td>{{ form.orderDescription }}</td> 
+      </tr>
+    </table>
+    {{ form.submit }}
+  </form>
+  <a href="{{ url_for('list') }}">一覧</a>
+  </div>
+
+  </body>
+</html>
