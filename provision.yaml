@@ -52,6 +52,3 @@
   - name: check python version
     shell: python -V
     when: not file_stat.stat.exists
-
-  - name: application needs directory
-    file: path=/var/dev/qrcodes state=directory owner=root group=root mode=0755
